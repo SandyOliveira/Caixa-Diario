@@ -50,7 +50,16 @@
                     <input id="paciente" list="listaPacientes" class="form-control">
                     <datalist id="listaPacientes"></datalist>
                 </div>
-
+                <div id="infoPaciente" class="alert alert-info mt-2 d-none">
+                    <strong>Resumo financeiro do paciente</strong><br>
+                    💰 Já pago: <span id="infoPago">R$ 0,00</span><br>
+                    ⏳ Falta: <span id="infoFalta">R$ 0,00</span><br>
+                    🗓 Último pagamento: <span id="infoData">—</span> <br>
+                    <button id="btnNovoTratamento" class="btn btn-outline-primary btn-sm mt-2 d-none"
+                        onclick="novoTratamento()">
+                        ➕ Registrar novo tratamento
+                    </button>
+                </div>
                 <div class="col-md-3">
                     <label>Médico</label>
                     <div class="input-group">
