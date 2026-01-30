@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Controle Financeiro Odontológico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <nav class="navbar navbar-dark bg-primary px-3">
+        <span class="navbar-brand">🦷 Controle Financeiro</span>
+        <div>
+            <a href="index.html" class="btn btn-light btn-sm">Registros</a>
+            <a href="relatorios.html" class="btn btn-outline-light btn-sm">Relatórios</a>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+
+        <!-- Totais do dia -->
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h6>Total recebido (hoje)</h6>
+                    <h4 class="text-success" id="totalRecebido">R$ 0,00</h4>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <h6>Total a receber (hoje)</h6>
+                    <h4 class="text-danger" id="totalReceber">R$ 0,00</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- Novo registro -->
+        <div class="card p-4 mb-4">
+            <h5>Novo registro financeiro</h5>
+
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label>Data</label>
+                    <input type="date" id="data" class="form-control">
+                </div>
+
+                <div class="col-md-4">
+                    <label>Paciente</label>
+                    <input id="paciente" list="listaPacientes" class="form-control">
+                    <datalist id="listaPacientes"></datalist>
+                </div>
+
+                <div class="col-md-3">
+                    <label>Médico</label>
+                    <div class="input-group">
+                        <select id="medico" class="form-select"></select>
+                        <button class="btn btn-outline-primary" data-bs-toggle="modal"
+                            data-bs-target="#modalMedico">+</button>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label>Tratamento</label>
+                    <div class="input-group">
+                        <select id="tratamento" class="form-select"></select>
+                        <button class="btn btn-outline-primary" data-bs-toggle="modal"
+                            data-bs-target="#modalTratamento">+</button>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label>Valor total</label>
+                    <input type="number" id="valorTotal" class="form-control">
+                </div>
+
+                <div class="col-md-3">
+                    <label>Valor pago</label>
+                    <input type="number" id="valorPago" class="form-control">
+                </div>
+
+                <div class="col-md-3">
+                    <label>Forma de pagamento</label>
+                    <select id="pagamento" class="form-select">
+                        <option>Dinheiro</option>
+                        <option>Cartão</option>
+                        <option>PIX</option>
+                        <option>Convênio</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label>Observação</label>
+                    <input type="text" id="obs" class="form-control">
+                </div>
+            </div>
+
+            <button onclick="salvarRegistro()" class="btn btn-success mt-3">💾 Salvar</button>
+        </div>
+
+        <!-- Registros do dia -->
+        <div class="card p-4">
+            <h5>Registros do dia</h5>
+            <div id="listaRegistros"></div>
+        </div>
+    </div>
+
+    <!-- Modal Médico -->
+    <div class="modal fade" id="modalMedico">
+        <div class="modal-dialog">
+            <div class="modal-content p-3">
+                <h5>Novo médico</h5>
+                <input type="text" id="novoMedico" class="form-control mb-2">
+                <button class="btn btn-primary" onclick="addMedico()">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Tratamento -->
+    <div class="modal fade" id="modalTratamento">
+        <div class="modal-dialog">
+            <div class="modal-content p-3">
+                <h5>Novo tratamento</h5>
+                <input type="text" id="novoTratamento" class="form-control mb-2">
+                <button class="btn btn-primary" onclick="addTratamento()">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/registros.js"></script>
+</body>
+
+</html>
